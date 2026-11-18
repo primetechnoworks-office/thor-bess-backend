@@ -1,0 +1,367 @@
+[
+  {
+    "slug": "thor-lfp-12v-15ah-30ah",
+    "name": "\"ThOR\" LFP 12V 15Ah / 30Ah",
+    "series": "12V",
+    "voltage": 12,
+    "capacity_label": "15 / 30 Ah",
+    "cycles": 3000,
+    "service_life": 7,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "A compact, lightweight 12V lithium LFP battery for portable power, small solar kits, UPS backup, e-bikes, fishing and camping — clean, silent energy you can carry anywhere.",
+    "best_for": [
+      "Portable power",
+      "Small solar kits",
+      "UPS & security systems",
+      "Camping & outdoor"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-1.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-2.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-3.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-4.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-5.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-6.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-7.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-8.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-9.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-10.webp",
+      "/images/products/lfp/thor-lfp-12v-15ah-30ah/thor-lfp-12v-15ah-30ah-11.webp"
+    ],
+    "sort_order": 10,
+    "variants": [
+      {
+        "label": "15 Ah",
+        "capacity_ah": 15,
+        "energy": "192 Wh",
+        "price": 7299
+      },
+      {
+        "label": "30 Ah",
+        "capacity_ah": 30,
+        "energy": "384 Wh",
+        "price": 12299
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-12v-100ah",
+    "name": "\"ThOR\" LFP 12V 100Ah",
+    "series": "12V",
+    "voltage": 12,
+    "capacity_label": "100 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "The go-to 12V lithium LFP battery for home inverters, solar systems, RVs and marine use — a lead-acid replacement with far longer life and no maintenance.",
+    "best_for": [
+      "Home inverter backup",
+      "Rooftop solar",
+      "RV & marine",
+      "Lead-acid replacement"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-12v-100ah/thor-lfp-12v-100ah-1.webp",
+      "/images/products/lfp/thor-lfp-12v-100ah/thor-lfp-12v-100ah-2.webp",
+      "/images/products/lfp/thor-lfp-12v-100ah/thor-lfp-12v-100ah-3.webp"
+    ],
+    "sort_order": 20,
+    "variants": [
+      {
+        "label": "100 Ah",
+        "capacity_ah": 100,
+        "energy": "1.4 kWh",
+        "price": 19799
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-12v-150ah",
+    "name": "\"ThOR\" LFP 12V 150Ah",
+    "series": "12V",
+    "voltage": 12,
+    "capacity_label": "150 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "More runtime in the same 12V footprint — ideal for homes and small offices that need longer backup from inverters and solar systems.",
+    "best_for": [
+      "Home & office backup",
+      "Solar storage",
+      "Telecom cabinets",
+      "Off-grid cabins"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-12v-150ah/thor-lfp-12v-150ah-1.webp",
+      "/images/products/lfp/thor-lfp-12v-150ah/thor-lfp-12v-150ah-2.webp",
+      "/images/products/lfp/thor-lfp-12v-150ah/thor-lfp-12v-150ah-3.webp",
+      "/images/products/lfp/thor-lfp-12v-150ah/thor-lfp-12v-150ah-4.webp",
+      "/images/products/lfp/thor-lfp-12v-150ah/thor-lfp-12v-150ah-5.webp"
+    ],
+    "sort_order": 30,
+    "variants": [
+      {
+        "label": "150 Ah",
+        "capacity_ah": 150,
+        "energy": "1.8 kWh",
+        "price": 32499
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-12v-230ah",
+    "name": "\"ThOR\" LFP 12V 230Ah",
+    "series": "12V",
+    "voltage": 12,
+    "capacity_label": "230 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "Our highest-capacity 12V lithium LFP battery for long-duration backup, larger solar installations and heavy daily cycling.",
+    "best_for": [
+      "Long-duration backup",
+      "Large solar systems",
+      "Commercial UPS",
+      "Remote sites"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-12v-230ah/thor-lfp-12v-230ah-1.webp",
+      "/images/products/lfp/thor-lfp-12v-230ah/thor-lfp-12v-230ah-2.webp",
+      "/images/products/lfp/thor-lfp-12v-230ah/thor-lfp-12v-230ah-3.webp",
+      "/images/products/lfp/thor-lfp-12v-230ah/thor-lfp-12v-230ah-4.webp"
+    ],
+    "sort_order": 40,
+    "variants": [
+      {
+        "label": "230 Ah",
+        "capacity_ah": 230,
+        "energy": "2.8 kWh",
+        "price": 39499
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-24v-15ah-30ah",
+    "name": "\"ThOR\" LFP 24V 15Ah / 30Ah",
+    "series": "24V",
+    "voltage": 24,
+    "capacity_label": "15 / 30 Ah",
+    "cycles": 3000,
+    "service_life": 7,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "A compact 24V lithium LFP pack for portable equipment, field tools, robotics and mobility — high voltage in a light, rugged form.",
+    "best_for": [
+      "Field equipment",
+      "Robotics & AGVs",
+      "Portable 24V systems",
+      "Mobility"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-24v-15ah-30ah/thor-lfp-24v-15ah-30ah-1.webp",
+      "/images/products/lfp/thor-lfp-24v-15ah-30ah/thor-lfp-24v-15ah-30ah-2.webp",
+      "/images/products/lfp/thor-lfp-24v-15ah-30ah/thor-lfp-24v-15ah-30ah-3.webp",
+      "/images/products/lfp/thor-lfp-24v-15ah-30ah/thor-lfp-24v-15ah-30ah-4.webp"
+    ],
+    "sort_order": 50,
+    "variants": [
+      {
+        "label": "15 Ah",
+        "capacity_ah": 15,
+        "energy": "384 Wh",
+        "price": 11199
+      },
+      {
+        "label": "30 Ah",
+        "capacity_ah": 30,
+        "energy": "768 Wh",
+        "price": 16299
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-24v-100ah",
+    "name": "\"ThOR\" LFP 24V 100Ah",
+    "series": "24V",
+    "voltage": 24,
+    "capacity_label": "100 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "A dependable 24V lithium LFP battery for inverters, solar storage and commercial backup where efficiency and long cycle life matter.",
+    "best_for": [
+      "24V inverters",
+      "Solar storage",
+      "Commercial backup",
+      "Data & telecom racks"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-24v-100ah/thor-lfp-24v-100ah-1.webp",
+      "/images/products/lfp/thor-lfp-24v-100ah/thor-lfp-24v-100ah-2.webp",
+      "/images/products/lfp/thor-lfp-24v-100ah/thor-lfp-24v-100ah-3.webp",
+      "/images/products/lfp/thor-lfp-24v-100ah/thor-lfp-24v-100ah-4.webp",
+      "/images/products/lfp/thor-lfp-24v-100ah/thor-lfp-24v-100ah-5.webp"
+    ],
+    "sort_order": 60,
+    "variants": [
+      {
+        "label": "100 Ah",
+        "capacity_ah": 100,
+        "energy": "2.4 kWh",
+        "price": 46999
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-24v-230ah",
+    "name": "\"ThOR\" LFP 24V 230Ah",
+    "series": "24V",
+    "voltage": 24,
+    "capacity_label": "230 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "High-capacity 24V storage for homes, clinics and small businesses — hours of clean backup power and daily solar self-consumption.",
+    "best_for": [
+      "Homes & clinics",
+      "Small businesses",
+      "Solar self-consumption",
+      "Rural electrification"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-24v-230ah/thor-lfp-24v-230ah-1.webp",
+      "/images/products/lfp/thor-lfp-24v-230ah/thor-lfp-24v-230ah-2.webp",
+      "/images/products/lfp/thor-lfp-24v-230ah/thor-lfp-24v-230ah-3.webp",
+      "/images/products/lfp/thor-lfp-24v-230ah/thor-lfp-24v-230ah-4.webp",
+      "/images/products/lfp/thor-lfp-24v-230ah/thor-lfp-24v-230ah-5.webp",
+      "/images/products/lfp/thor-lfp-24v-230ah/thor-lfp-24v-230ah-6.webp"
+    ],
+    "sort_order": 70,
+    "variants": [
+      {
+        "label": "230 Ah",
+        "capacity_ah": 230,
+        "energy": "5.5 kWh",
+        "price": 82299
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-24v-280ah-300ah",
+    "name": "\"ThOR\" LFP 24V 280Ah / 300Ah",
+    "series": "24V",
+    "voltage": 24,
+    "capacity_label": "280 / 300 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "Our largest 24V lithium LFP battery for demanding commercial, field and off-grid installations that need maximum energy at 24V.",
+    "best_for": [
+      "Off-grid installations",
+      "Field & defence",
+      "Commercial storage",
+      "Remote monitoring"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-24v-280ah-300ah/thor-lfp-24v-280ah-300ah-1.webp",
+      "/images/products/lfp/thor-lfp-24v-280ah-300ah/thor-lfp-24v-280ah-300ah-2.webp"
+    ],
+    "sort_order": 80,
+    "variants": [
+      {
+        "label": "280 / 300 Ah",
+        "capacity_ah": 300,
+        "energy": "7.2 kWh",
+        "price": 131199
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-48v-100ah",
+    "name": "\"ThOR\" LFP 48V 100Ah",
+    "series": "48V",
+    "voltage": 48,
+    "capacity_label": "100 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "A 48V lithium LFP battery for hybrid solar inverters, hospitals, retail and industrial backup — efficient, scalable and built for daily cycling.",
+    "best_for": [
+      "Hybrid solar inverters",
+      "Hospitals & clinics",
+      "Retail & offices",
+      "Industrial backup"
+    ],
+    "model": null,
+    "images": [
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-1.webp",
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-2.webp",
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-3.webp",
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-4.webp",
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-5.webp",
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-6.webp",
+      "/images/products/lfp/thor-lfp-48v-100ah/thor-lfp-48v-100ah-7.webp"
+    ],
+    "sort_order": 90,
+    "variants": [
+      {
+        "label": "100 Ah",
+        "capacity_ah": 100,
+        "energy": "4.8 kWh",
+        "price": 94299
+      }
+    ]
+  },
+  {
+    "slug": "thor-lfp-48v-280ah-300ah",
+    "name": "\"ThOR\" LFP 48V 280Ah / 300Ah",
+    "series": "48V",
+    "voltage": 48,
+    "capacity_label": "280 / 300 Ah",
+    "cycles": 4000,
+    "service_life": 9,
+    "guarantee": 3,
+    "warranty": 5,
+    "summary": "High-capacity 15.2 kWh scalable BESS for homes, commercial buildings and microgrids — the foundation for serious solar storage and energy independence.",
+    "best_for": [
+      "Whole-home backup",
+      "Commercial buildings",
+      "Microgrids",
+      "Solar + storage"
+    ],
+    "model": "THOR-PRO-48-300H-15K",
+    "images": [
+      "/images/products/lfp/thor-lfp-48v-280ah-300ah/thor-lfp-48v-280ah-300ah-1.webp",
+      "/images/products/lfp/thor-lfp-48v-280ah-300ah/thor-lfp-48v-280ah-300ah-2.webp",
+      "/images/products/lfp/thor-lfp-48v-280ah-300ah/thor-lfp-48v-280ah-300ah-3.webp",
+      "/images/products/lfp/thor-lfp-48v-280ah-300ah/thor-lfp-48v-280ah-300ah-4.webp",
+      "/images/products/lfp/thor-lfp-48v-280ah-300ah/thor-lfp-48v-280ah-300ah-5.webp",
+      "/images/products/lfp/thor-lfp-48v-280ah-300ah/thor-lfp-48v-280ah-300ah-6.webp"
+    ],
+    "sort_order": 100,
+    "variants": [
+      {
+        "label": "280 / 300 Ah",
+        "capacity_ah": 300,
+        "energy": "14.4 kWh (15.2 kWh peak)",
+        "price": 189599
+      }
+    ]
+  }
+]

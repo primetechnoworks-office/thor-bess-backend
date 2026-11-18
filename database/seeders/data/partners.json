@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Savli Technology & Business Incubator, Government of Gujarat",
+    "logo": "/images/partners/savli-technology-business-incubator-gujarat.webp",
+    "url": "https://stbi.gujarat.gov.in/Default.aspx",
+    "sort_order": 10
+  },
+  {
+    "name": "TiHAN IIT Hyderabad",
+    "logo": "/images/partners/tihan-iit-hyderabad.webp",
+    "url": "https://tihan.iith.ac.in/partnerships.html#startup-ecosystem",
+    "sort_order": 20
+  },
+  {
+    "name": "IIEC and DST NIDHI",
+    "logo": "/images/partners/iiec-dst-nidhi.webp",
+    "url": null,
+    "sort_order": 30
+  },
+  {
+    "name": "Startup India, MSME and Udyam registration",
+    "logo": "/images/partners/startup-india-msme-udyam-registration.webp",
+    "url": null,
+    "sort_order": 40
+  }
+]

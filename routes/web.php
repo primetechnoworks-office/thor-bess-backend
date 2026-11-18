@@ -1,9 +1,18 @@
 <?php
 
+use App\Http\Controllers\Admin\CredentialsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\MilestoneController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\TeamMemberController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -51,9 +60,24 @@ Route::middleware(['auth', 'active'])->prefix('admin')->name('admin.')->group(fu
     Route::get('leads/{lead}/attachment', [LeadController::class, 'attachment'])->name('leads.attachment');
     Route::resource('leads', LeadController::class)->only(['index', 'show', 'update', 'destroy']);
 
+    Route::post('posts/images', [PostController::class, 'uploadImage'])->middleware('throttle:30,1')->name('posts.images');
     Route::resource('posts', PostController::class)->except(['show']);
+
+    Route::resource('products', ProductController::class)->except(['show']);
+    Route::resource('testimonials', TestimonialController::class)->except(['show']);
+    Route::resource('team', TeamMemberController::class)->except(['show']);
+    Route::resource('milestones', MilestoneController::class)->except(['show']);
+    Route::resource('faqs', FaqController::class)->except(['show']);
+    Route::put('partners/incubators', [PartnerController::class, 'incubators'])->name('partners.incubators');
+    Route::resource('partners', PartnerController::class)->except(['show']);
+    Route::get('hero-banners', [MediaController::class, 'edit'])->name('media.edit');
+    Route::put('hero-banners', [MediaController::class, 'update'])->name('media.update');
 
     Route::middleware('role:admin')->group(function () {
         Route::resource('users', UserController::class)->except(['show']);
+        Route::get('settings', [SettingsController::class, 'edit'])->name('settings.edit');
+        Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
+        Route::get('credentials', [CredentialsController::class, 'edit'])->name('credentials.edit');
+        Route::put('credentials', [CredentialsController::class, 'update'])->name('credentials.update');
     });
 });

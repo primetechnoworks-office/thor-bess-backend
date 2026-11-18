@@ -1,0 +1,38 @@
+[
+  {
+    "page": "e-generator",
+    "question": "Can the e-Generator be customised?",
+    "answer": "Yes — every e-Generator is built to order. Light-duty units range from 200 Ah to 1200 Ah with 1–20 kW output, medium-duty vehicle-mounted systems cover 20–150 kWh, and containerised heavy-duty systems scale from 200 kWh up to 5 MWh.",
+    "sort_order": 10
+  },
+  {
+    "page": "e-generator",
+    "question": "How is it different from a diesel generator?",
+    "answer": "It stores energy in lithium LFP batteries instead of burning fuel, so it runs silently (under 28 dB), produces no exhaust, switches over in 15 ms and needs far less maintenance.",
+    "sort_order": 20
+  },
+  {
+    "page": "e-generator",
+    "question": "Can it be charged with solar or wind?",
+    "answer": "Yes. The light-duty platform has a solar input (24–48 VDC, up to 5 kW), a wind input (24 VDC / 60 A), a vehicle charging port and a 220 V grid inlet. Larger systems are designed around your renewable sources.",
+    "sort_order": 30
+  },
+  {
+    "page": "e-generator",
+    "question": "How long will it power my equipment?",
+    "answer": "Typically 4 to 30 hours depending on the load and the capacity you choose. Share your equipment list in the form and we'll size it for the backup time you need.",
+    "sort_order": 40
+  },
+  {
+    "page": "e-generator",
+    "question": "What warranty and service do you offer?",
+    "answer": "A standard 5-year warranty, 7–10 years of battery and service life (upgradable), and an Annual Maintenance Contract available for 5 years.",
+    "sort_order": 50
+  },
+  {
+    "page": "e-generator",
+    "question": "How do I order?",
+    "answer": "Light-duty units can be booked online through our secure PayU payment page or via UPI. For medium- and heavy-duty systems, or any custom build, send a requirement and our team will prepare a proposal.",
+    "sort_order": 60
+  }
+]

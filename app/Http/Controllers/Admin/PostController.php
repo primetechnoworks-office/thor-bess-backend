@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Support\PostBody;
+use Illuminate\Database\UniqueConstraintViolationException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -44,7 +49,7 @@ class PostController extends Controller
         $data = $this->validated($request);
         $data['created_by'] = $request->user()->id;
 
-        $post = Post::create($data);
+        $post = $this->persist($data);
 
         return redirect()->route('admin.posts.edit', $post)->with('success', 'Post created.');
     }
@@ -56,9 +61,47 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post): RedirectResponse
     {
-        $post->update($this->validated($request, $post));
+        $this->persist($this->validated($request, $post), $post);
 
         return back()->with('success', 'Post saved.');
+    }
+
+    /**
+     * Image upload for the article editor (CKEditor's SimpleUploadAdapter).
+     * Responds with { url } on success or { error: { message } } as the editor expects.
+     */
+    public function uploadImage(Request $request): JsonResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'upload' => ['required', 'image', 'mimes:jpg,jpeg,png,webp,gif', 'max:3072'],
+        ], ['upload.max' => 'Images must be 3 MB or smaller.', 'upload.mimes' => 'Please upload a JPG, PNG, WebP or GIF image.']);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => ['message' => $validator->errors()->first()]], 422);
+        }
+
+        $path = $request->file('upload')->store('posts/content', 'public');
+
+        return response()->json(['url' => Storage::disk('public')->url($path)]);
+    }
+
+    /**
+     * Creates or updates a post. uniqueSlug() already picks a free slug (title, title-2, title-3, …),
+     * but if two posts with the same title are saved at the same moment both can pick the same one;
+     * the database's unique index rejects the second, so it takes the next free slug and tries again.
+     */
+    private function persist(array $data, ?Post $post = null): Post
+    {
+        for ($attempt = 1; ; $attempt++) {
+            try {
+                return $post ? tap($post)->update($data) : Post::create($data);
+            } catch (UniqueConstraintViolationException $e) {
+                if ($attempt >= 5 || ! isset($data['slug'])) {
+                    throw $e;
+                }
+                $data['slug'] = Post::uniqueSlug($data['title'], $post?->id);
+            }
+        }
     }
 
     public function destroy(Post $post): RedirectResponse
@@ -75,7 +118,6 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:200'],
-            'slug' => ['nullable', 'string', 'max:200', 'alpha_dash', Rule::unique('posts', 'slug')->ignore($post?->id)],
             'category' => ['required', Rule::in(config('thor.blog_categories'))],
             'excerpt' => ['required', 'string', 'max:400'],
             'body' => ['required', 'string'],
@@ -88,7 +130,17 @@ class PostController extends Controller
             'remove_image' => ['nullable', 'boolean'],
         ], ['published_at.required' => 'Choose a publish date to publish this post.']);
 
-        $data['slug'] = Post::uniqueSlug(($data['slug'] ?? null) ?: $data['title'], $post?->id);
+        // An editor that only contains empty paragraphs or stripped markup counts as empty.
+        $visible = html_entity_decode(strip_tags(PostBody::normalize($data['body']), '<img>'), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        if (preg_replace('/[\s\x{00A0}]+/u', '', $visible) === '') {
+            throw ValidationException::withMessages(['body' => 'Please write the article before saving.']);
+        }
+
+        // The web address comes from the title. A post that's already live keeps its address
+        // so links shared on social media, emails and search results don't break.
+        if (! $post?->isLive()) {
+            $data['slug'] = Post::uniqueSlug($data['title'], $post?->id);
+        }
         $data['is_featured'] = $request->boolean('is_featured');
 
         unset($data['image'], $data['remove_image']);

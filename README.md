@@ -12,7 +12,16 @@ and provides a branded admin panel (TailAdmin theme recoloured to the website's 
 | **Auth (API)** | Sanctum tokens: `POST /api/auth/login`, `GET /api/auth/me`, `POST /api/auth/logout` |
 | **Roles** | `admin` (everything, incl. user management) and `editor` (leads + blog) |
 | **Leads** | Contact enquiries, datasheet requests and e-Generator quotes in one inbox — filter, search, status, assignee, internal notes, attachment download, CSV export |
-| **Blog** | Create / edit / schedule / feature posts with cover image upload; seeded with the 8 articles from `frontend/app/data/blog.ts` |
+| **Blog** | Create / edit / schedule / feature posts with cover image upload and a CKEditor article body (headings, highlight box, links, lists, quotes, images, tables); web address generated from the title; seeded with the 8 articles from `frontend/app/data/blog.ts` |
+| **Products** | LFP battery catalogue: name, series, sizes & prices, specs, "best for", photos (upload, reorder, cover), show/hide, order. Feeds the datasheet form too |
+| **Testimonials** | Client quotes for the website slider, with photo, show/hide and order (flags leftover placeholder text) |
+| **Team** | Leadership team on the About page: name, role, portrait, LinkedIn, show/hide, order |
+| **Milestones** | Grants & work orders on the About page: tag, title, text, badge, note, status label, photo |
+| **FAQs** | Questions & answers per website page (today: the e-Generator page) |
+| **Partners** | Home page logo slider (logo, link) + the About page incubators list |
+| **Hero & banners** | Home page film (YouTube link or uploaded MP4) and poster; banner photo for each inner page |
+| **Certificates & awards** (admin only) | DPIIT / Udyam / GeM / patent numbers, verify link, awards, certificate image |
+| **Company settings** (admin only) | Phones, WhatsApp, emails, hours, address, offices + Google Maps, social links, PayU "Book now" and IndiaMART links |
 | **Dashboard** | Lead totals, 14-day trend, split by form and status, recent leads and posts |
 
 ## Local setup (XAMPP)
@@ -67,9 +76,20 @@ Visitor ──► Next.js /api/{contact,datasheet,quote}  (validates, rate-limit
                └─► POST backend /api/leads/*  ──► saved in admin + email to sales
                └─► backend down / not configured? → falls back to the old direct Resend email
 
-Next.js blog pages, home blog section, sitemap ──► GET backend /api/posts   (cached 5 min)
-               └─► backend down / not configured? → falls back to frontend/app/data/blog.ts
-Admin saves/deletes a post ──► POST website /api/revalidate  (refreshes the cache immediately)
+Next.js pages ──► GET backend (cached 5 min):
+     /api/posts               blog, home blog section, sitemap
+     /api/products[/{slug}]   LFP Battery catalogue + product pages, sitemap
+     /api/products/datasheet-options   "Request datasheet" dropdown + its validation
+     /api/testimonials        home + About testimonial slider
+     /api/team                About page leadership team
+     /api/settings            phones, emails, offices, socials, Book now / IndiaMART links (header, footer, contact…)
+     /api/milestones          About page milestones
+     /api/faqs?page=…         FAQ lists (e-Generator page)
+     /api/partners            home logo slider + About incubators
+     /api/credentials         "Our Recognition" section + Technology page patent no.
+     /api/media               home hero film + inner-page banner images
+               └─► backend down / not configured? → falls back to frontend/app/data/*.ts
+Admin saves/deletes any of these ──► POST website /api/revalidate  (refreshes that content immediately)
 ```
 
 Settings that must match on both sides:
@@ -80,11 +100,25 @@ Settings that must match on both sides:
 | `REVALIDATE_SECRET=<random>` | `WEBSITE_REVALIDATE_SECRET=<same random>` |
 | — | `TRUSTED_PROXIES=<IP of the Next.js server>` (so leads/rate limits use the visitor's IP) |
 
-Frontend files involved: `app/lib/backend.ts` (lead forwarding), `app/lib/blog.ts` (blog data),
-`app/api/revalidate/route.ts`, and the pages that call them. Posts created in the admin get their own
-`/blog/{slug}` page on first visit — no website rebuild needed.
+Frontend files involved: `app/lib/backend.ts` (cached fetch + lead forwarding), `app/lib/blog.ts`, `app/lib/products.ts`,
+`app/lib/content.ts` (testimonials, team), `app/lib/site.ts` + `app/components/site-provider.tsx` (company details for
+server and client components), `app/api/revalidate/route.ts`, and the pages that call them. Posts and products created in
+the admin get their own page on first visit — no website rebuild needed. Company names and logos stay in `data/site.ts`.
 
 Run both locally: `php artisan serve` here and `npm run dev` in `../frontend`.
+
+## Article editor (CKEditor 5)
+
+- Self-hosted CKEditor 5 **v49.1.0** in `public/assets/vendor/ckeditor5/` (no CKEditor cloud/CDN), configured in
+  `resources/views/admin/posts/form.blade.php`. It runs under CKEditor's open-source **GPL** licence key (`licenseKey: 'GPL'`);
+  if GPL terms don't suit the business, buy a commercial key from ckeditor.com and replace `'GPL'` with it.
+- Bodies are stored as HTML. Every save goes through `App\Support\PostBody::normalize()`, which converts old text-format
+  bodies and **sanitizes** the HTML (only editor markup survives — no scripts, event handlers, inline styles or iframes).
+  Allowed CSS classes: `callout` (Style → Highlight box), `lead` (Style → Intro text), `image`, `table`.
+- Images dropped into the editor are uploaded to `POST /admin/posts/images` and stored in `storage/app/public/posts/content`.
+- To update CKEditor: `npm install --save-dev ckeditor5@<version>`, then copy
+  `node_modules/ckeditor5/dist/browser/ckeditor5.umd.js` and `ckeditor5.css` into `public/assets/vendor/ckeditor5/`.
+- A backup of the posts table from before the switch to HTML is in `storage/app/private/backups/`.
 
 ## Theme
 
@@ -96,5 +130,5 @@ Run both locally: `php artisan serve` here and `npm run dev` in `../frontend`.
 ## Tests
 
 ```bash
-php artisan test   # 27 feature tests: auth, password reset, API tokens, lead API, admin pages, roles, website cache refresh
+php artisan test   # 52 feature tests: auth, password reset, API tokens, lead API, admin pages, roles, website cache refresh, slugs, article HTML, site content
 ```

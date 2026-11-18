@@ -1,0 +1,23 @@
+[
+  {
+    "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+    "name": "John Doe",
+    "role": "CEO, GreenEnergy Solutions Pvt. Ltd.",
+    "avatar": "/images/testimonials/client-avatar.webp",
+    "sort_order": 10
+  },
+  {
+    "quote": "Our sites now run on quiet, dependable \"ThOR\" BESS power without the fuel runs. The team designed the system around how we actually operate.",
+    "name": "John Doe",
+    "role": "CEO, GreenEnergy Solutions Pvt. Ltd.",
+    "avatar": "/images/testimonials/client-avatar.webp",
+    "sort_order": 20
+  },
+  {
+    "quote": "From the first site survey to commissioning, the storage platform felt engineered for the field — portable, clean, and ready when the grid is not.",
+    "name": "John Doe",
+    "role": "CEO, GreenEnergy Solutions Pvt. Ltd.",
+    "avatar": "/images/testimonials/client-avatar.webp",
+    "sort_order": 30
+  }
+]

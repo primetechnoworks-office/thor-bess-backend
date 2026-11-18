@@ -62,17 +62,8 @@ return [
 
     'dial_codes' => ['+91', '+971', '+1', '+44'],
 
-    'datasheet_products' => [
-        'thor-lfp-12v-15ah-30ah' => '"ThOR" LFP 12V 15Ah / 30Ah',
-        'thor-lfp-12v-100ah' => '"ThOR" LFP 12V 100Ah',
-        'thor-lfp-12v-150ah' => '"ThOR" LFP 12V 150Ah',
-        'thor-lfp-12v-230ah' => '"ThOR" LFP 12V 230Ah',
-        'thor-lfp-24v-15ah-30ah' => '"ThOR" LFP 24V 15Ah / 30Ah',
-        'thor-lfp-24v-100ah' => '"ThOR" LFP 24V 100Ah',
-        'thor-lfp-24v-230ah' => '"ThOR" LFP 24V 230Ah',
-        'thor-lfp-24v-280ah-300ah' => '"ThOR" LFP 24V 280Ah / 300Ah',
-        'thor-lfp-48v-100ah' => '"ThOR" LFP 48V 100Ah',
-        'thor-lfp-48v-280ah-300ah' => '"ThOR" LFP 48V 280Ah / 300Ah',
+    // Datasheet form options besides the LFP batteries (those come from the Products admin).
+    'datasheet_extra' => [
         'thor-e-generator' => '"ThOR" e-Generator Model',
         'thor-bess-container' => '"ThOR" BESS Container',
     ],
@@ -91,6 +82,21 @@ return [
     ],
 
     'charging_sources' => ['Grid', 'Solar', 'Wind', 'Vehicle', 'Bio-fuel / Hydro'],
+
+    // Website pages that show an FAQ list (Admin → FAQs). Add a page here once the website renders FAQs on it.
+    'faq_pages' => [
+        'e-generator' => 'e-Generator page',
+    ],
+
+    // Inner pages with a banner image (Admin → Hero & banners). Keys match the website's PageBanner `page` prop.
+    'banner_pages' => [
+        'about' => 'About Us',
+        'products' => 'Products',
+        'lfp-battery' => 'LFP Battery',
+        'technology' => 'Technology',
+        'blog' => 'Blog & News',
+        'contact' => 'Contact Us',
+    ],
 
     'blog_categories' => ['LFP Technology', 'Energy Storage', 'Renewables', 'Buying Guide', 'Company News'],
 

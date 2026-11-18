@@ -64,10 +64,32 @@ class AdminPanelTest extends TestCase
         $this->assertDatabaseHas('posts', ['slug' => 'why-lfp', 'is_featured' => true]);
 
         $this->getJson('/api/posts')->assertOk()->assertJsonPath('data.0.slug', 'why-lfp');
-        $this->getJson('/api/posts/why-lfp')->assertOk()->assertJsonPath('data.body', "## Intro\nText");
+        $this->getJson('/api/posts/why-lfp')->assertOk()->assertJsonPath('data.body', "<h2>Intro</h2>\n<p>Text</p>");
 
         Post::where('slug', 'why-lfp')->update(['status' => 'draft']);
         $this->getJson('/api/posts/why-lfp')->assertNotFound();
+    }
+
+    public function test_slug_is_generated_from_the_title_on_save(): void
+    {
+        $this->actingAs(User::factory()->create());
+        $fields = ['category' => 'Company News', 'excerpt' => 'Short', 'body' => 'Body', 'author' => 'Team'];
+
+        // New post: slug from the title, unique, and a submitted slug is ignored.
+        $this->post(route('admin.posts.store'), $fields + ['title' => '"ThOR" Container: 2 MWh @ Solar Parks', 'status' => 'draft', 'slug' => 'hacked']);
+        $this->post(route('admin.posts.store'), $fields + ['title' => '"ThOR" Container: 2 MWh @ Solar Parks', 'status' => 'draft']);
+        $this->assertSame(['thor-container-2-mwh-at-solar-parks', 'thor-container-2-mwh-at-solar-parks-2'], Post::orderBy('id')->pluck('slug')->all());
+
+        // Draft: renaming updates the slug.
+        $draft = Post::orderBy('id')->first();
+        $this->put(route('admin.posts.update', $draft), $fields + ['title' => 'Renamed Draft', 'status' => 'draft']);
+        $this->assertSame('renamed-draft', $draft->fresh()->slug);
+
+        // Live post: renaming keeps the published address.
+        $this->put(route('admin.posts.update', $draft), $fields + ['title' => 'Renamed Draft', 'status' => 'published', 'published_at' => now()->toDateString()]);
+        $this->put(route('admin.posts.update', $draft), $fields + ['title' => 'Better Title', 'status' => 'published', 'published_at' => now()->toDateString()]);
+        $this->assertSame('renamed-draft', $draft->fresh()->slug);
+        $this->assertSame('Better Title', $draft->fresh()->title);
     }
 
     public function test_admin_cannot_delete_or_demote_themselves(): void

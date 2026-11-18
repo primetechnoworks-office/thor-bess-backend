@@ -10,7 +10,8 @@
 ])
 @php
     $id = $attributes->get('id', 'f-'.str_replace(['[', ']', '.'], '-', $name));
-    $error = $errors->getBag($bag)->first($name);
+    $key = str_replace(['[]', '[', ']'], ['', '.', ''], $name); // socials[facebook] → socials.facebook
+    $error = $errors->getBag($bag)->first($key);
     $isPassword = $type === 'password';
 @endphp
 <div class="t-field">
@@ -24,7 +25,7 @@
         <input
             id="{{ $id }}"
             name="{{ $name }}"
-            @if ($isPassword) :type="show ? 'text' : 'password'" type="password" @else type="{{ $type }}" value="{{ old($name, $value) }}" @endif
+            @if ($isPassword) :type="show ? 'text' : 'password'" type="password" @else type="{{ $type }}" value="{{ old($key, $value) }}" @endif
             @if ($required) required @endif
             @if ($error) aria-invalid="true" aria-describedby="{{ $id }}-error" @endif
             {{ $attributes->except('id')->class(['t-input', 't-input--icon' => $icon, 'is-invalid' => $error]) }}

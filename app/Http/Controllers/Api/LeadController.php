@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Mail\LeadReceived;
 use App\Models\Lead;
+use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -86,12 +87,13 @@ class LeadController extends Controller
             return $this->ok();
         }
 
+        $products = Product::datasheetOptions(); // live batteries from the admin + e-Generator + container
         $data = $this->check($request, [
             'name' => ['required', 'string', 'max:80'],
             'company' => ['required', 'string', 'max:120'],
             'email' => ['required', 'string', 'max:120', self::EMAIL],
             'phone' => ['required', 'string', 'max:20', self::PHONE],
-            'product' => ['required', Rule::in(array_keys(config('thor.datasheet_products')))],
+            'product' => ['required', Rule::in(array_keys($products))],
             'designation' => ['nullable', 'string', 'max:80'],
             'location' => ['nullable', 'string', 'max:80'],
             'message' => ['nullable', 'string', 'max:1000'],
@@ -106,7 +108,7 @@ class LeadController extends Controller
             'company' => $data['company'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'subject' => config('thor.datasheet_products')[$data['product']],
+            'subject' => $products[$data['product']],
             'message' => $data['message'] ?? null,
             'details' => array_filter([
                 'product' => $data['product'],

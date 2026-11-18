@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Mail\LeadReceived;
 use App\Models\Lead;
+use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Mail;
@@ -23,6 +24,10 @@ class LeadApiTest extends TestCase
 
     public function test_datasheet_request_is_saved_and_emailed(): void
     {
+        Product::create(['slug' => 'thor-lfp-12v-100ah', 'name' => '"ThOR" LFP 12V 100Ah', 'series' => '12V', 'voltage' => 12, 'capacity_label' => '100 Ah',
+            'variants' => [['label' => '100 Ah', 'capacity_ah' => 100, 'energy' => '1.4 kWh', 'price' => 19799]], 'cycles' => 4000, 'service_life' => 9,
+            'guarantee' => 3, 'warranty' => 5, 'summary' => 'S', 'best_for' => [], 'images' => ['/images/x.webp']]);
+
         $this->postJson('/api/leads/datasheet', [
             'name' => 'Asha Rao', 'company' => 'Sunrise Solar', 'email' => 'asha@sunrise.in', 'phone' => '98765 43210',
             'product' => 'thor-lfp-12v-100ah', 'location' => 'Pune',

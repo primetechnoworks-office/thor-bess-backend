@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasUniqueSlug;
+use App\Support\PostBody;
 use App\Support\WebsiteCache;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
@@ -11,6 +14,8 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+    use HasUniqueSlug;
+
     public const STATUS_DRAFT = 'draft';
     public const STATUS_PUBLISHED = 'published';
 
@@ -25,6 +30,12 @@ class Post extends Model
             'is_featured' => 'boolean',
             'published_at' => 'date',
         ];
+    }
+
+    /** Bodies are always stored as cleaned HTML (old text-format bodies are converted). */
+    protected function body(): Attribute
+    {
+        return Attribute::make(set: fn (?string $value) => PostBody::normalize($value));
     }
 
     protected static function booted(): void
@@ -45,19 +56,6 @@ class Post extends Model
         return $query->where('status', self::STATUS_PUBLISHED)
             ->whereNotNull('published_at')
             ->whereDate('published_at', '<=', now());
-    }
-
-    public static function uniqueSlug(string $source, ?int $ignoreId = null): string
-    {
-        $base = Str::slug($source) ?: 'post';
-        $slug = $base;
-        $i = 2;
-        while (static::where('slug', $slug)->when($ignoreId, fn ($q) => $q->whereKeyNot($ignoreId))->exists()) {
-            $slug = "{$base}-{$i}";
-            $i++;
-        }
-
-        return $slug;
     }
 
     /**

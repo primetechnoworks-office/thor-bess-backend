@@ -11,8 +11,8 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+   @stack('head') {{-- page/vendor CSS first, so the brand layer below can restyle it --}}
    <link href="{{ asset('assets/css/thor-admin.css') }}?v={{ filemtime(public_path('assets/css/thor-admin.css')) }}" rel="stylesheet">
-   @stack('head')
 </head>
 <body
    x-data="{ loaded: true, darkMode: false, sidebarToggle: false }"

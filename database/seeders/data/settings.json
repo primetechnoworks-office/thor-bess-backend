@@ -1,0 +1,47 @@
+{
+  "phone": "+91 83497 74339",
+  "whatsapp": "+91 88506 25798",
+  "email": "sbbcto@thorenergybox.com",
+  "sales_email": "sales@thorenergybox.com",
+  "landline": "+91 2667 26600",
+  "fax": "+91 2667 264900",
+  "hours": "Mon – Sat, 9:30 AM – 6:30 PM IST",
+  "address": [
+    "SBB Energy India Pvt. Ltd.,",
+    "Vadodara, Gujarat – 391775"
+  ],
+  "offices": [
+    {
+      "label": "Corporate Office",
+      "lines": [
+        "Savli Technology & Business Incubator (STBI)",
+        "EPIP / CFC Building, First Floor, Dept. of Science & Technology, Govt. of Gujarat",
+        "GIDC Savli, Manjusar, Vadodara, Gujarat – 391775"
+      ],
+      "map": "https://www.google.com/maps?q=Savli+Technology+and+Business+Incubator,+GIDC+Savli,+Manjusar,+Vadodara,+Gujarat+391775&output=embed",
+      "directions": "https://www.google.com/maps/search/?api=1&query=Savli+Technology+and+Business+Incubator+GIDC+Savli+Vadodara"
+    },
+    {
+      "label": "Registered Office",
+      "lines": [
+        "HIG-1/1072, Industrial Estate MPHB",
+        "I E Bhilai, Durg",
+        "Chhattisgarh – 490026"
+      ],
+      "map": "",
+      "directions": "https://www.google.com/maps/search/?api=1&query=Jamul+Bhilai+Durg+Chhattisgarh+490026"
+    }
+  ],
+  "google_profile": "https://local.google.com/place?placeid=ChIJ-f-qu9Jt_mURN-l0id7EAg8",
+  "google_review": "https://search.google.com/local/writereview?placeid=ChIJ-f-qu9Jt_mURN-l0id7EAg8",
+  "socials": {
+    "facebook": "https://www.facebook.com/ThORBESS",
+    "instagram": "https://www.instagram.com/sbbthor/",
+    "x": "https://x.com/Sbbenergy_India",
+    "linkedin": "https://www.linkedin.com/in/supriyo-biswas-405509403",
+    "youtube": "https://www.youtube.com/@ThORBESS",
+    "pinterest": "https://in.pinterest.com/sbbenergy/"
+  },
+  "book_now_url": "https://u.payu.in/pJfyvaxHbC63",
+  "indiamart_url": "https://www.indiamart.com/sbbenergyprivatelimited-vadodara/"
+}

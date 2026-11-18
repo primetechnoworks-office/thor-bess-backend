@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Supriyo Biswas",
+    "role": "Founder & Managing Director (ILT)",
+    "image": "/images/team/supriyo-biswas-founder-portrait.webp",
+    "linkedin": "https://www.linkedin.com/in/supriyo-biswas-405509403",
+    "sort_order": 10
+  },
+  {
+    "name": "Amit Athlekar",
+    "role": "Director (ILT) – SCM & Procurement",
+    "image": "/images/team/amit-athlekar.webp",
+    "linkedin": null,
+    "sort_order": 20
+  },
+  {
+    "name": "Karan Jani",
+    "role": "Director (ILT) – Sales & Marketing",
+    "image": "/images/team/karan-jani.webp",
+    "linkedin": null,
+    "sort_order": 30
+  },
+  {
+    "name": "Anurag Nigam",
+    "role": "Director (ILT) – Design & Engineering",
+    "image": "/images/team/anurag-nigam.webp",
+    "linkedin": null,
+    "sort_order": 40
+  },
+  {
+    "name": "Jiten Dave",
+    "role": "Director (ILT) – Legal & Compliance",
+    "image": "/images/team/jiten-dave.webp",
+    "linkedin": null,
+    "sort_order": 50
+  },
+  {
+    "name": "Amit Panchal",
+    "role": "Director (ILT) – Operations",
+    "image": "/images/team/amit-panchal.webp",
+    "linkedin": null,
+    "sort_order": 60
+  },
+  {
+    "name": "Kashish Shah",
+    "role": "Vertical Head (ILT) – CP & Distribution",
+    "image": "/images/team/kashish-shah.webp",
+    "linkedin": null,
+    "sort_order": 70
+  },
+  {
+    "name": "J. B.",
+    "role": "Chief Financial Officer",
+    "image": null,
+    "linkedin": null,
+    "sort_order": 80
+  },
+  {
+    "name": "Ms. Rakshika Jain",
+    "role": "Finance Controller / CA",
+    "image": null,
+    "linkedin": null,
+    "sort_order": 90
+  },
+  {
+    "name": "M. M. B.",
+    "role": "Business Development Manager",
+    "image": null,
+    "linkedin": null,
+    "sort_order": 100
+  }
+]

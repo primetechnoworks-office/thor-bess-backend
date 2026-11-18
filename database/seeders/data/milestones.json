@@ -1,0 +1,42 @@
+[
+  {
+    "tag": "First Responder",
+    "title": "15 kW Emergency Power for Mobile ICUs",
+    "copy": "Customised \"ThOR\" BESS for ambulances, field operation theatres and disaster teams — 6–10 hours of clean, silent power.",
+    "badge": "MVP grant approved",
+    "note": "Approved for MVP · Dept. of Science & Technology, Gujarat · IMA partner",
+    "status": "Work order ongoing",
+    "image": "/images/milestones/thor-bess-15kw-ambulance-first-responder.webp",
+    "sort_order": 10
+  },
+  {
+    "tag": "Defence",
+    "title": "Tactical Power for Defence Mobility",
+    "copy": "A clean-energy field supply unit replacing diesel generators — 12–18 hours off-grid, vehicle-mounted or air-dropped, powering drones, radar and command centres.",
+    "badge": "iDEX (MoD) grant",
+    "note": "With TiHAN, IIT Hyderabad",
+    "status": "Work order ongoing",
+    "image": "/images/milestones/thor-bess-defence-field-camp.webp",
+    "sort_order": 20
+  },
+  {
+    "tag": "Agri-tech",
+    "title": "Agri e-Generator for Irrigation",
+    "copy": "30 kWh LFP e-Generator running 2–15 HP pumps, IP65 weatherproof with solar or grid charging — eliminating diesel on farms.",
+    "badge": "Development grant",
+    "note": "Ministry of Agriculture · AIC Delhi, NITI Aayog",
+    "status": "In pipeline",
+    "image": "/images/milestones/thor-bess-agri-irrigation-pump.webp",
+    "sort_order": 30
+  },
+  {
+    "tag": "Clean Cooking",
+    "title": "LFP-based Portable Induction Cooking",
+    "copy": "Solar-charged induction hot-plates in three models (LD/MD/HD) replacing LPG in rural homes and commercial kitchens — levelised cost of ₹3.85 per kWh over a 12-year life.",
+    "badge": "Private funding",
+    "note": "Funded by ICON Solar, Raipur",
+    "status": "Work order confirmed",
+    "image": "/images/milestones/thor-bess-solar-induction-cooking.webp",
+    "sort_order": 40
+  }
+]
