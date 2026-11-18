@@ -23,7 +23,7 @@
    </section>
 
    <div class="t-stack">
-      <x-photo-card name="photo" label="Client photo" :url="\App\Support\Media::forAdmin($testimonial->avatar)" help="Square photo works best. JPG, PNG or WebP up to 2 MB." round />
+      <x-photo-card name="photo" label="Client photo" :max-mb="2" :url="\App\Support\Media::forAdmin($testimonial->avatar)" help="Square photo works best. JPG, PNG or WebP up to 2 MB." round />
       <section class="t-card">
          <div class="t-card__head"><h2>Publishing</h2></div>
          <div class="t-card__body">

@@ -18,7 +18,7 @@
                <x-input name="patent" label="IPR patent number" :value="$v('patent')" maxlength="40" help="Also quoted on the Technology page." />
             </div>
             <div style="margin-top:18px">
-               <x-input name="dipp_verify" type="url" label="“Verify our certificate” link" :value="$v('dipp_verify')" maxlength="300" placeholder="https://www.startupindia.gov.in/…" />
+               <x-input name="dipp_verify" type="url" label="“Verify our certificate” link" :value="$v('dipp_verify')" maxlength="300" data-parsley-https-url placeholder="https://www.startupindia.gov.in/…" />
             </div>
          </div>
       </section>
@@ -45,7 +45,7 @@
          <div class="t-photo t-photo--contain" style="aspect-ratio:1.414"><template x-if="preview"><img :src="preview" alt=""></template></div>
          <div class="t-field" style="margin-top:16px">
             <label for="f-cert" class="t-label">Replace certificate</label>
-            <input id="f-cert" type="file" name="certificate_file" accept="image/jpeg,image/png,image/webp" class="t-input @error('certificate_file') is-invalid @enderror" style="padding:8px 10px"
+            <input id="f-cert" type="file" name="certificate_file" accept="image/jpeg,image/png,image/webp" data-parsley-max-file-size="5" data-parsley-file-types="jpg,jpeg,png,webp" data-parsley-file-types-message="Please choose a JPG, PNG or WebP image." class="t-input @error('certificate_file') is-invalid @enderror" style="padding:8px 10px"
                    @change="const f = $event.target.files[0]; if (f) preview = URL.createObjectURL(f)">
             @error('certificate_file')<span class="t-error">{{ $message }}</span>@else<span class="t-help">Landscape scan, at least 1600 px wide, up to 5 MB. Visitors can open it full-size.</span>@enderror
          </div>

@@ -12,12 +12,12 @@
       <div class="t-card__body">
          <x-input name="name" label="Full name" :value="$member->name" required maxlength="80" placeholder="e.g. Karan Jani" />
          <x-input name="role" label="Role" :value="$member->role" required maxlength="120" placeholder="e.g. Director (ILT) – Sales & Marketing" />
-         <x-input name="linkedin" type="url" label="LinkedIn profile" :value="$member->linkedin" maxlength="255" placeholder="https://www.linkedin.com/in/…" help="Optional. Shown as a LinkedIn button on the team card." />
+         <x-input name="linkedin" type="url" label="LinkedIn profile" data-parsley-pattern="^https://([a-z]+\.)?linkedin\.com/.*" data-parsley-pattern-message="Please enter a LinkedIn profile link (https://www.linkedin.com/in/…)." :value="$member->linkedin" maxlength="255" placeholder="https://www.linkedin.com/in/…" help="Optional. Shown as a LinkedIn button on the team card." />
       </div>
    </section>
 
    <div class="t-stack">
-      <x-photo-card name="photo" label="Portrait" :url="\App\Support\Media::forAdmin($member->image)" help="Portrait (3:4) works best. Without a photo the website shows the person's initials." />
+      <x-photo-card name="photo" label="Portrait" :max-mb="2" :url="\App\Support\Media::forAdmin($member->image)" help="Portrait (3:4) works best. Without a photo the website shows the person's initials." />
       <section class="t-card">
          <div class="t-card__head"><h2>Publishing</h2></div>
          <div class="t-card__body">

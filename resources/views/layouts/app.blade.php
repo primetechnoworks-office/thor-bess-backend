@@ -36,6 +36,9 @@
       </div>
    </div>
    <script src="{{ asset('assets/js/bundle.js') }}"></script>
+   <script src="{{ asset('assets/vendor/parsley/jquery.min.js') }}"></script>
+   <script src="{{ asset('assets/vendor/parsley/parsley.min.js') }}"></script>
+   <script src="{{ asset('assets/js/thor-validation.js') }}?v={{ filemtime(public_path('assets/js/thor-validation.js')) }}"></script>
    @stack('scripts')
 </body>
 </html>

@@ -30,7 +30,7 @@
       </div>
    </section>
 
-   <x-photo-card name="photo" label="Logo" :url="\App\Support\Media::forAdmin($partner->logo)" :removable="false" contain
+   <x-photo-card name="photo" label="Logo" :max-mb="2" required :url="\App\Support\Media::forAdmin($partner->logo)" :removable="false" contain
                  help="Wide logo on a white or transparent background. JPG, PNG or WebP up to 2 MB (export SVG logos as PNG)." />
 </form>
 @endsection

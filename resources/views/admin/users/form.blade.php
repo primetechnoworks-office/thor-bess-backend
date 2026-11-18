@@ -14,7 +14,7 @@
          <div class="t-form-grid">
             <x-input name="name" label="Full name" :value="$user->name" required maxlength="80" />
             <x-input name="email" type="email" label="Email" :value="$user->email" required maxlength="120" autocomplete="off" />
-            <x-input name="phone" label="Phone" :value="$user->phone" maxlength="20" placeholder="+91 98765 43210" />
+            <x-input name="phone" label="Phone" :value="$user->phone" maxlength="20" placeholder="+91 98765 43210" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." />
             <div class="t-field">
                <label for="f-role" class="t-label">Role <span class="req">*</span></label>
                <select id="f-role" name="role" class="t-select" @disabled($isSelf)>
@@ -30,8 +30,8 @@
          <h3 class="t-heading" style="margin:0 0 4px;font-size:15px;font-weight:700">{{ $user->exists ? 'Reset password' : 'Password' }}</h3>
          <p class="t-muted" style="margin:0 0 16px;font-size:13.5px">{{ $user->exists ? 'Leave blank to keep the current password.' : 'Share it securely; they can change it from their profile.' }}</p>
          <div class="t-form-grid">
-            <x-input name="password" type="password" label="Password" :required="! $user->exists" autocomplete="new-password" />
-            <x-input name="password_confirmation" type="password" label="Confirm password" :required="! $user->exists" autocomplete="new-password" />
+            <x-input name="password" type="password" label="Password" :required="! $user->exists" autocomplete="new-password" minlength="8" data-parsley-minlength-message="Use at least 8 characters." />
+            <x-input name="password_confirmation" type="password" label="Confirm password" :required="! $user->exists" autocomplete="new-password" data-parsley-validate-if-empty="true" data-parsley-equalto="#f-password" data-parsley-equalto-message="The passwords don’t match." />
          </div>
       </div>
    </section>

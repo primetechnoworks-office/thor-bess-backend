@@ -9,8 +9,8 @@
         @csrf
         <input type="hidden" name="token" value="{{ $request->route('token') }}">
         <x-input name="email" type="email" label="Email" icon="mail" :value="$request->email" autocomplete="username" required />
-        <x-input name="password" type="password" label="New password" icon="lock" placeholder="At least 8 characters" autocomplete="new-password" autofocus required />
-        <x-input name="password_confirmation" type="password" label="Confirm new password" icon="lock" placeholder="Repeat the new password" autocomplete="new-password" required />
+        <x-input name="password" type="password" label="New password" icon="lock" placeholder="At least 8 characters" autocomplete="new-password" autofocus required minlength="8" data-parsley-minlength-message="Use at least 8 characters." />
+        <x-input name="password_confirmation" type="password" label="Confirm new password" icon="lock" placeholder="Repeat the new password" autocomplete="new-password" required data-parsley-equalto="#f-password" data-parsley-equalto-message="The passwords don’t match." />
         <div style="margin-top:24px">
             <button type="submit" class="t-btn t-btn--block">Reset password <x-icon name="arrow-right" /></button>
         </div>

@@ -19,19 +19,19 @@
          <div class="t-card__head"><div><h2>Contact</h2><p>Phone numbers become tap-to-call links on the website.</p></div></div>
          <div class="t-card__body">
             <div class="t-form-grid">
-               <x-input name="phone" label="Main phone" :value="$v('phone')" required icon="phone" placeholder="+91 83497 74339" />
-               <x-input name="whatsapp" label="WhatsApp number" :value="$v('whatsapp')" icon="phone" placeholder="+91 88506 25798" help="Used for the “Chat on WhatsApp” link." />
+               <x-input name="phone" label="Main phone" :value="$v('phone')" required icon="phone" placeholder="+91 83497 74339" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." />
+               <x-input name="whatsapp" label="WhatsApp number" :value="$v('whatsapp')" icon="phone" placeholder="+91 88506 25798" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." help="Used for the “Chat on WhatsApp” link." />
                <x-input name="email" type="email" label="General email" :value="$v('email')" required icon="mail" />
                <x-input name="sales_email" type="email" label="Sales email" :value="$v('sales_email')" required icon="mail" />
-               <x-input name="landline" label="Landline" :value="$v('landline')" icon="phone" />
-               <x-input name="fax" label="Fax" :value="$v('fax')" />
+               <x-input name="landline" label="Landline" :value="$v('landline')" icon="phone" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." />
+               <x-input name="fax" label="Fax" :value="$v('fax')" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." />
             </div>
             <div style="margin-top:18px">
                <x-input name="hours" label="Working hours" :value="$v('hours')" maxlength="120" placeholder="Mon – Sat, 9:30 AM – 6:30 PM IST" />
             </div>
             <div class="t-field">
                <label for="f-address" class="t-label">Short address <span class="req">*</span></label>
-               <textarea id="f-address" name="address" rows="2" maxlength="300" class="t-textarea @error('address') is-invalid @enderror">{{ is_array($v('address')) ? implode("\n", $v('address')) : $v('address') }}</textarea>
+               <textarea id="f-address" name="address" rows="2" maxlength="300" required class="t-textarea @error('address') is-invalid @enderror">{{ is_array($v('address')) ? implode("\n", $v('address')) : $v('address') }}</textarea>
                @error('address')<span class="t-error">{{ $message }}</span>@else<span class="t-help">Shown in the footer and contact section. One line per row.</span>@enderror
             </div>
          </div>
@@ -59,7 +59,7 @@
                      </div>
                      <div class="t-field">
                         <label class="t-label" :for="`office-dir-${i}`">Directions link</label>
-                        <input class="t-input" type="url" :id="`office-dir-${i}`" :name="`offices[${i}][directions]`" x-model="office.directions" placeholder="https://www.google.com/maps/search/?api=1&query=…">
+                        <input class="t-input" type="url" :id="`office-dir-${i}`" :name="`offices[${i}][directions]`" x-model="office.directions" data-parsley-https-url placeholder="https://www.google.com/maps/search/?api=1&query=…">
                      </div>
                      <div class="t-field t-span-2">
                         <label class="t-label" :for="`office-lines-${i}`">Address <span class="req">*</span></label>
@@ -67,7 +67,7 @@
                      </div>
                      <div class="t-field t-span-2">
                         <label class="t-label" :for="`office-map-${i}`">Google Maps embed link</label>
-                        <input class="t-input" type="url" :id="`office-map-${i}`" :name="`offices[${i}][map]`" x-model="office.map" placeholder="https://www.google.com/maps?q=…&output=embed">
+                        <input class="t-input" type="url" :id="`office-map-${i}`" :name="`offices[${i}][map]`" x-model="office.map" data-parsley-pattern="^https://(www\.|maps\.)?google\.[a-z.]+/maps.*" data-parsley-pattern-message="Use a Google Maps embed link (https://www.google.com/maps?…&amp;output=embed)." placeholder="https://www.google.com/maps?q=…&output=embed">
                         <span class="t-help">Optional. In Google Maps: Share → Embed a map, and copy the link inside <code>src="…"</code>.</span>
                      </div>
                   </div>
@@ -83,7 +83,7 @@
          <div class="t-card__head"><div><h2>Social media</h2><p>Leave empty to hide an icon.</p></div></div>
          <div class="t-card__body">
             @foreach (\App\Models\Setting::SOCIAL_NETWORKS as $key => $label)
-               <x-input name="socials[{{ $key }}]" type="url" :label="$label" :value="$socials[$key] ?? ''" :id="'f-social-'.$key" placeholder="https://…" />
+               <x-input name="socials[{{ $key }}]" type="url" :label="$label" :value="$socials[$key] ?? ''" :id="'f-social-'.$key" placeholder="https://…" data-parsley-https-url />
             @endforeach
          </div>
       </section>
@@ -91,10 +91,10 @@
       <section class="t-card">
          <div class="t-card__head"><h2>Links</h2></div>
          <div class="t-card__body">
-            <x-input name="book_now_url" type="url" label="“Book now” payment page" :value="$v('book_now_url')" placeholder="https://u.payu.in/…" help="PayU link used by the Book Now buttons on battery pages." />
-            <x-input name="indiamart_url" type="url" label="IndiaMART store" :value="$v('indiamart_url')" placeholder="https://www.indiamart.com/…" />
-            <x-input name="google_profile" type="url" label="Google Business profile" :value="$v('google_profile')" />
-            <x-input name="google_review" type="url" label="Google review link" :value="$v('google_review')" help="Where the “Review us on Google” button goes." />
+            <x-input name="book_now_url" type="url" label="“Book now” payment page" :value="$v('book_now_url')" data-parsley-https-url placeholder="https://u.payu.in/…" help="PayU link used by the Book Now buttons on battery pages." />
+            <x-input name="indiamart_url" type="url" label="IndiaMART store" :value="$v('indiamart_url')" data-parsley-https-url placeholder="https://www.indiamart.com/…" />
+            <x-input name="google_profile" type="url" label="Google Business profile" :value="$v('google_profile')" data-parsley-https-url />
+            <x-input name="google_review" type="url" label="Google review link" :value="$v('google_review')" data-parsley-https-url help="Where the “Review us on Google” button goes." />
          </div>
          <div class="t-card__foot">
             <span class="t-soft" style="font-size:13px">Changes appear on the website straight away.</span>

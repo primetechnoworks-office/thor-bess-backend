@@ -59,7 +59,7 @@
             </div>
             <div class="t-field">
                <label class="t-label" for="notes">Internal notes</label>
-               <textarea id="notes" name="notes" rows="5" class="t-textarea @error('notes') is-invalid @enderror" placeholder="Call summary, quotation sent, next steps…">{{ old('notes', $lead->notes) }}</textarea>
+               <textarea id="notes" name="notes" rows="5" maxlength="5000" class="t-textarea @error('notes') is-invalid @enderror" placeholder="Call summary, quotation sent, next steps…">{{ old('notes', $lead->notes) }}</textarea>
                @error('notes')<span class="t-error">{{ $message }}</span>@enderror
                <span class="t-help">Only visible to admin users.</span>
             </div>

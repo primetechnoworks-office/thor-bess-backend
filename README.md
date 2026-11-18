@@ -120,6 +120,17 @@ Run both locally: `php artisan serve` here and `npm run dev` in `../frontend`.
   `node_modules/ckeditor5/dist/browser/ckeditor5.umd.js` and `ckeditor5.css` into `public/assets/vendor/ckeditor5/`.
 - A backup of the posts table from before the switch to HTML is in `storage/app/private/backups/`.
 
+## Form validation (Parsley.js)
+
+Every admin form is checked in the browser before it is sent (Parsley.js 2.9.2 + jQuery 3.7.1, self-hosted in
+`public/assets/vendor/parsley/`, set up in `public/assets/js/thor-validation.js`). The server still validates everything.
+
+- Rules come from HTML attributes: `required`, `type="email|url|number"`, `min`/`max`, `minlength`/`maxlength`, `pattern`,
+  `data-parsley-equalto`, plus custom ones: `data-parsley-max-file-size` (MB), `data-parsley-file-types`,
+  `data-parsley-https-url`, `data-parsley-youtube`, `data-parsley-required-when="#field:value"`, `data-parsley-min-photos`.
+- All POST forms with editable fields are picked up automatically; add `data-parsley-skip` to a `<form>` to opt out.
+- Number boxes accept whole numbers only unless they have `step="any"`.
+
 ## Theme
 
 - `public/assets/css/style.css` — the original compiled TailAdmin theme (untouched).

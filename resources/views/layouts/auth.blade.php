@@ -54,5 +54,8 @@
         </aside>
     </div>
     <script defer src="{{ asset('assets/js/bundle.js') }}"></script>
+    <script defer src="{{ asset('assets/vendor/parsley/jquery.min.js') }}"></script>
+    <script defer src="{{ asset('assets/vendor/parsley/parsley.min.js') }}"></script>
+    <script defer src="{{ asset('assets/js/thor-validation.js') }}?v={{ filemtime(public_path('assets/js/thor-validation.js')) }}"></script>
 </body>
 </html>

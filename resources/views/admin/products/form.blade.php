@@ -19,7 +19,7 @@
       <section class="t-card">
          <div class="t-card__head"><h2>Product details</h2></div>
          <div class="t-card__body">
-            <x-input name="name" label="Product name" :value="$product->name" required maxlength="150" placeholder='e.g. "ThOR" LFP 12V 100Ah'
+            <x-input name="name" label="Product name" :value="$product->name" required maxlength="150" placeholder="e.g. “ThOR” LFP 12V 100Ah"
                      :help="$product->exists ? 'Web address: /products/lfp-battery/'.$product->slug.' — stays the same if you rename the product.' : 'The web address is created from the name when you save.'" />
             <div class="t-form-grid" style="margin-top:18px">
                <div class="t-field">
@@ -60,10 +60,10 @@
                <div class="t-variants__head"><span>Size label</span><span>Capacity (Ah)</span><span>Energy</span><span>Price (₹)</span><span></span></div>
                <template x-for="(row, i) in rows" :key="i">
                   <div class="t-variants__row">
-                     <input class="t-input" :name="`variants[${i}][label]`" x-model="row.label" placeholder="100 Ah" maxlength="40" required aria-label="Size label">
-                     <input class="t-input" type="number" step="any" min="0" :name="`variants[${i}][capacity_ah]`" x-model="row.capacity_ah" placeholder="100" required aria-label="Capacity in Ah">
-                     <input class="t-input" :name="`variants[${i}][energy]`" x-model="row.energy" placeholder="1.4 kWh" maxlength="60" required aria-label="Energy">
-                     <input class="t-input" type="number" min="0" step="1" :name="`variants[${i}][price]`" x-model="row.price" placeholder="19799" required aria-label="Price in rupees">
+                     <input class="t-input" :name="`variants[${i}][label]`" x-model="row.label" placeholder="100 Ah" maxlength="40" required aria-label="Size label" data-parsley-errors-messages-disabled="true">
+                     <input class="t-input" type="number" step="any" min="0" :name="`variants[${i}][capacity_ah]`" x-model="row.capacity_ah" placeholder="100" required data-parsley-errors-messages-disabled="true" aria-label="Capacity in Ah">
+                     <input class="t-input" :name="`variants[${i}][energy]`" x-model="row.energy" placeholder="1.4 kWh" maxlength="60" required aria-label="Energy" data-parsley-errors-messages-disabled="true">
+                     <input class="t-input" type="number" min="0" step="1" data-parsley-type="integer" :name="`variants[${i}][price]`" x-model="row.price" placeholder="19799" required data-parsley-errors-messages-disabled="true" aria-label="Price in rupees">
                      <button type="button" class="t-icon-action t-icon-action--danger" title="Remove size" @click="rows.splice(i, 1)" :disabled="rows.length === 1"><x-icon name="trash" /></button>
                   </div>
                </template>
@@ -98,7 +98,8 @@
             </div>
             <div class="t-field" style="margin-top:16px">
                <label for="f-images" class="t-label">Add photos</label>
-               <input id="f-images" type="file" name="new_images[]" multiple accept="image/jpeg,image/png,image/webp" class="t-input @error('new_images') is-invalid @enderror @error('new_images.*') is-invalid @enderror" style="padding:8px 10px" @change="pick($event)">
+               <input id="f-images" type="file" name="new_images[]" multiple accept="image/jpeg,image/png,image/webp" data-parsley-max-file-size="3" data-parsley-file-types="jpg,jpeg,png,webp" data-parsley-file-types-message="Please choose a JPG, PNG or WebP image."
+                      data-parsley-min-photos="input[name='images[]']" data-parsley-validate-if-empty="true" class="t-input @error('new_images') is-invalid @enderror @error('new_images.*') is-invalid @enderror" style="padding:8px 10px" @change="pick($event)">
                @if ($errors->has('new_images') || $errors->has('new_images.*'))
                   <span class="t-error">{{ $errors->first('new_images') ?: collect($errors->get('new_images.*'))->flatten()->first() }}</span>
                @else

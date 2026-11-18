@@ -25,7 +25,7 @@
          <div class="t-card__body">
             <x-input name="name" label="Full name" :value="$user->name" bag="profile" required maxlength="80" icon="user" />
             <x-input name="email" type="email" label="Email" :value="$user->email" bag="profile" required maxlength="120" icon="mail" />
-            <x-input name="phone" label="Phone" :value="$user->phone" bag="profile" maxlength="20" icon="phone" placeholder="+91 98765 43210" />
+            <x-input name="phone" label="Phone" :value="$user->phone" bag="profile" maxlength="20" icon="phone" placeholder="+91 98765 43210" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." />
          </div>
          <div class="t-card__foot"><span></span><button type="submit" class="t-btn">Save profile</button></div>
       </form>
@@ -35,8 +35,8 @@
          <div class="t-card__head"><div><h2>Change password</h2><p>Other devices will be signed out</p></div></div>
          <div class="t-card__body">
             <x-input name="current_password" type="password" label="Current password" bag="password" required icon="lock" autocomplete="current-password" />
-            <x-input name="password" type="password" label="New password" bag="password" required icon="lock" autocomplete="new-password" help="At least 8 characters." />
-            <x-input name="password_confirmation" type="password" label="Confirm new password" bag="password" required icon="lock" autocomplete="new-password" />
+            <x-input name="password" type="password" label="New password" bag="password" required icon="lock" autocomplete="new-password" help="At least 8 characters." minlength="8" data-parsley-minlength-message="Use at least 8 characters." />
+            <x-input name="password_confirmation" type="password" label="Confirm new password" bag="password" required icon="lock" autocomplete="new-password" data-parsley-equalto="#f-password" data-parsley-equalto-message="The passwords don’t match." />
          </div>
          <div class="t-card__foot"><span></span><button type="submit" class="t-btn t-btn--navy">Update password</button></div>
       </form>

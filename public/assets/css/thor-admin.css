@@ -540,6 +540,13 @@ body { background: var(--t-bg); color: var(--t-text); font-family: var(--font-ou
 .t-repeat + .t-repeat { margin-top: 14px; }
 .t-repeat .t-input, .t-repeat .t-textarea { background: var(--t-surface); }
 
+/* ---------- 21. Client-side validation (Parsley, see assets/js/thor-validation.js) ---------- */
+.parsley-errors:empty { display: none; }
+.parsley-errors > span { display: block; }
+.t-variants__row .t-input.is-invalid { border-color: var(--t-red); background: rgba(229, 72, 77, .04); }
+.t-check input.is-invalid { outline: 2px solid var(--t-red); outline-offset: 1px; }
+.t-btn.is-busy { cursor: progress; opacity: .75; }
+
 /* Utilities used by the admin that the precompiled theme CSS doesn't include */
 .pt-7 { padding-top: 1.75rem; }
 .pb-8 { padding-bottom: 2rem; }

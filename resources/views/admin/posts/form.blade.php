@@ -30,7 +30,7 @@
                <label for="f-body" class="t-label">Article body <span class="req">*</span></label>
                <div class="t-editor @error('body') is-invalid @enderror">
                   {{-- CKEditor replaces this textarea and writes its HTML back into it on save. --}}
-                  <textarea id="f-body" name="body" class="t-textarea t-textarea--code">{{ old('body', $post->body) }}</textarea>
+                  <textarea id="f-body" name="body" class="t-textarea t-textarea--code" required data-ckeditor data-parsley-required-message="Please write the article before saving.">{{ old('body', $post->body) }}</textarea>
                </div>
                @error('body')
                   <span class="t-error">{{ $message }}</span>
@@ -56,7 +56,8 @@
                   <option value="published" @selected(old('status', $post->status) === 'published')>Published</option>
                </select>
             </div>
-            <x-input name="published_at" type="date" label="Publish date" :value="$post->published_at?->format('Y-m-d')" help="A future date schedules the post." />
+            <x-input name="published_at" type="date" label="Publish date" :value="$post->published_at?->format('Y-m-d')" help="A future date schedules the post."
+                     data-parsley-required-when="#f-status:published" data-parsley-validate-if-empty="true" data-parsley-required-when-message="Choose a publish date to publish this post." />
             <div class="t-field">
                <label for="f-category" class="t-label">Category <span class="req">*</span></label>
                <select id="f-category" name="category" class="t-select @error('category') is-invalid @enderror">
@@ -93,7 +94,7 @@
             </template>
             <div class="t-field" style="margin-top:16px">
                <label for="f-image" class="t-label">Upload image</label>
-               <input id="f-image" type="file" name="image" accept="image/jpeg,image/png,image/webp" class="t-input @error('image') is-invalid @enderror" style="padding:8px 10px"
+               <input id="f-image" type="file" name="image" accept="image/jpeg,image/png,image/webp" data-parsley-max-file-size="3" data-parsley-file-types="jpg,jpeg,png,webp" data-parsley-file-types-message="Please choose a JPG, PNG or WebP image." class="t-input @error('image') is-invalid @enderror" style="padding:8px 10px"
                       @change="const f = $event.target.files[0]; if (f) { preview = URL.createObjectURL(f); remove = false }">
                @error('image')<span class="t-error">{{ $message }}</span>@else<span class="t-help">JPG, PNG or WebP up to 3 MB. Landscape (3:2) works best.</span>@enderror
             </div>
@@ -166,6 +167,9 @@
             },
             placeholder: 'Start writing the article…',
             ui: { viewportOffset: { top: 80 } }, // keep the sticky toolbar below the admin header
+         }).then((editor) => {
+            (window.thorEditors = window.thorEditors || []).push(editor); // validated by assets/js/thor-validation.js
+            if (window.thorValidateEditor) window.thorValidateEditor(editor);
          }).catch((error) => {
             // If the editor can't load, the plain textarea still works.
             console.error('CKEditor failed to start', error);
