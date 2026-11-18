@@ -12,12 +12,12 @@
       <div class="t-card__body">
          <div class="t-field">
             <label for="f-quote" class="t-label">Quote <span class="req">*</span></label>
-            <textarea id="f-quote" name="quote" rows="5" maxlength="600" required class="t-textarea @error('quote') is-invalid @enderror" placeholder="What the client said about “ThOR” BESS…">{{ old('quote', $testimonial->quote) }}</textarea>
-            @error('quote')<span class="t-error">{{ $message }}</span>@else<span class="t-help">Up to 600 characters. Quotation marks are added by the website.</span>@enderror
+            <textarea id="f-quote" name="quote" rows="5" maxlength="360" required class="t-textarea @error('quote') is-invalid @enderror" placeholder="What the client said about “ThOR” BESS…">{{ old('quote', $testimonial->quote) }}</textarea>
+            @error('quote')<span class="t-error">{{ $message }}</span>@else<span class="t-help">Up to 360 characters so the slider stays a steady height. Quotation marks are added by the website.</span>@enderror
          </div>
          <div class="t-form-grid" style="margin-top:18px">
-            <x-input name="name" label="Client name" :value="$testimonial->name" required maxlength="80" placeholder="e.g. Priya Sharma" />
-            <x-input name="role" label="Role & company" :value="$testimonial->role" maxlength="120" placeholder="e.g. Operations Head, Sunrise Hospitals" />
+            <x-input name="name" label="Client name" :value="$testimonial->name" required maxlength="60" placeholder="e.g. Priya Sharma" />
+            <x-input name="role" label="Role & company" :value="$testimonial->role" maxlength="80" placeholder="e.g. Operations Head, Sunrise Hospitals" />
          </div>
       </div>
    </section>

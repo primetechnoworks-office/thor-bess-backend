@@ -53,8 +53,8 @@ class TeamMemberController extends Controller
     private function validated(Request $request, ?TeamMember $member = null): array
     {
         $data = $request->validate([
-            'name' => ['required', 'string', 'max:80'],
-            'role' => ['required', 'string', 'max:120'],
+            'name' => ['required', 'string', 'max:50'],
+            'role' => ['required', 'string', 'max:70'],
             'linkedin' => ['nullable', 'url:https', 'max:255', 'regex:#^https://([a-z]+\.)?linkedin\.com/#i'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'remove_photo' => ['nullable', 'boolean'],

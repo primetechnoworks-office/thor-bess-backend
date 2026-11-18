@@ -140,6 +140,23 @@
     });
   }
 
+  // Character counter under every text box with a limit, e.g. "128 / 360". Long content is what
+  // stretches the website's design, so editors can see how close they are to the limit.
+  function addCounter(el) {
+    var max = parseInt(el.getAttribute('maxlength'), 10);
+    if (!max || el.hasAttribute('data-ckeditor') || el.dataset.counter) return;
+    el.dataset.counter = '1';
+    var $counter = $('<span class="t-counter" aria-hidden="true"></span>');
+    var $field = $(el).closest('.t-field');
+    ($field.length ? $field : $(el).parent()).append($counter);
+    var update = function () {
+      var n = el.value.length;
+      $counter.text(n + ' / ' + max).toggleClass('is-near', n >= max * 0.9);
+    };
+    $(el).on('input', update);
+    update();
+  }
+
   // Coming "back" to a page restored from the browser cache: re-enable its buttons.
   window.addEventListener('pageshow', function () {
     $('button.is-busy').prop('disabled', false).removeClass('is-busy');
@@ -147,6 +164,7 @@
 
   $(function () {
     $('form').filter(function () { return (this.getAttribute('method') || 'get').toLowerCase() === 'post'; }).each(function () { bind(this); });
+    $('.t-card textarea[maxlength]').each(function () { addCounter(this); });
   });
 
   // Fields edited by CKEditor: re-check when the editor changes after a failed submit.

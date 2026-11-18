@@ -53,9 +53,9 @@ class TestimonialController extends Controller
     private function validated(Request $request, ?Testimonial $testimonial = null): array
     {
         $data = $request->validate([
-            'quote' => ['required', 'string', 'max:600'],
-            'name' => ['required', 'string', 'max:80'],
-            'role' => ['nullable', 'string', 'max:120'],
+            'quote' => ['required', 'string', 'max:360'],
+            'name' => ['required', 'string', 'max:60'],
+            'role' => ['nullable', 'string', 'max:80'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'remove_photo' => ['nullable', 'boolean'],
             'sort_order' => ['required', 'integer', 'min:0', 'max:100000'],

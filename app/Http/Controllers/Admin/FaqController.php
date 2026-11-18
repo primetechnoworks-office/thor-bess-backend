@@ -59,8 +59,8 @@ class FaqController extends Controller
     {
         $data = $request->validate([
             'page' => ['required', Rule::in(array_keys(config('thor.faq_pages')))],
-            'question' => ['required', 'string', 'max:255'],
-            'answer' => ['required', 'string', 'max:2000'],
+            'question' => ['required', 'string', 'max:160'],
+            'answer' => ['required', 'string', 'max:1200'],
             'sort_order' => ['required', 'integer', 'min:0', 'max:100000'],
             'is_active' => ['nullable', 'boolean'],
         ]);

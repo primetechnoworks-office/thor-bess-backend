@@ -11,20 +11,20 @@
       <div class="t-card__head"><h2>Milestone</h2></div>
       <div class="t-card__body">
          <div class="t-form-grid">
-            <x-input name="tag" label="Sector tag" :value="$milestone->tag" required maxlength="60" placeholder="e.g. Defence" help="Small label above the title." />
-            <x-input name="status" label="Status on photo" :value="$milestone->status" maxlength="80" placeholder="e.g. Work order ongoing" />
+            <x-input name="tag" label="Sector tag" :value="$milestone->tag" required maxlength="30" placeholder="e.g. Defence" help="Small label above the title." />
+            <x-input name="status" label="Status on photo" :value="$milestone->status" maxlength="40" placeholder="e.g. Work order ongoing" />
          </div>
          <div style="margin-top:18px">
-            <x-input name="title" label="Title" :value="$milestone->title" required maxlength="160" placeholder="e.g. Tactical Power for Defence Mobility" />
+            <x-input name="title" label="Title" :value="$milestone->title" required maxlength="90" placeholder="e.g. Tactical Power for Defence Mobility" />
          </div>
          <div class="t-field">
             <label for="f-copy" class="t-label">Description <span class="req">*</span></label>
-            <textarea id="f-copy" name="copy" rows="4" maxlength="600" required class="t-textarea @error('copy') is-invalid @enderror">{{ old('copy', $milestone->copy) }}</textarea>
+            <textarea id="f-copy" name="copy" rows="4" maxlength="300" required class="t-textarea @error('copy') is-invalid @enderror">{{ old('copy', $milestone->copy) }}</textarea>
             @error('copy')<span class="t-error">{{ $message }}</span>@enderror
          </div>
          <div class="t-form-grid" style="margin-top:18px">
-            <x-input name="badge" label="Badge" :value="$milestone->badge" maxlength="120" placeholder="e.g. iDEX (MoD) grant" help="Bold line at the bottom of the card." />
-            <x-input name="note" label="Note" :value="$milestone->note" maxlength="255" placeholder="e.g. Ministry of Defence · 2026" help="Small print under the badge." />
+            <x-input name="badge" label="Badge" :value="$milestone->badge" maxlength="60" placeholder="e.g. iDEX (MoD) grant" help="Bold line at the bottom of the card." />
+            <x-input name="note" label="Note" :value="$milestone->note" maxlength="120" placeholder="e.g. Ministry of Defence · 2026" help="Small print under the badge." />
          </div>
       </div>
    </section>

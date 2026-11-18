@@ -10,8 +10,8 @@
    <section class="t-card">
       <div class="t-card__head"><h2>Details</h2></div>
       <div class="t-card__body">
-         <x-input name="name" label="Full name" :value="$member->name" required maxlength="80" placeholder="e.g. Karan Jani" />
-         <x-input name="role" label="Role" :value="$member->role" required maxlength="120" placeholder="e.g. Director (ILT) – Sales & Marketing" />
+         <x-input name="name" label="Full name" :value="$member->name" required maxlength="50" placeholder="e.g. Karan Jani" />
+         <x-input name="role" label="Role" :value="$member->role" required maxlength="70" placeholder="e.g. Director (ILT) – Sales & Marketing" />
          <x-input name="linkedin" type="url" label="LinkedIn profile" data-parsley-pattern="^https://([a-z]+\.)?linkedin\.com/.*" data-parsley-pattern-message="Please enter a LinkedIn profile link (https://www.linkedin.com/in/…)." :value="$member->linkedin" maxlength="255" placeholder="https://www.linkedin.com/in/…" help="Optional. Shown as a LinkedIn button on the team card." />
       </div>
    </section>

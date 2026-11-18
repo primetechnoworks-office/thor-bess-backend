@@ -117,9 +117,9 @@ class PostController extends Controller
     private function validated(Request $request, ?Post $post = null): array
     {
         $data = $request->validate([
-            'title' => ['required', 'string', 'max:200'],
+            'title' => ['required', 'string', 'max:120'],
             'category' => ['required', Rule::in(config('thor.blog_categories'))],
-            'excerpt' => ['required', 'string', 'max:400'],
+            'excerpt' => ['required', 'string', 'max:250'],
             'body' => ['required', 'string'],
             'author' => ['required', 'string', 'max:80'],
             'status' => ['required', Rule::in([Post::STATUS_DRAFT, Post::STATUS_PUBLISHED])],

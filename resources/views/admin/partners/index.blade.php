@@ -47,8 +47,8 @@
       <div class="t-card__body">
          <div class="t-field">
             <label for="f-incubators" class="t-label">Incubation &amp; association partners</label>
-            <textarea id="f-incubators" name="incubators" rows="9" maxlength="3000" class="t-textarea @error('incubators') is-invalid @enderror">{{ old('incubators', implode("\n", $incubators)) }}</textarea>
-            @error('incubators')<span class="t-error">{{ $message }}</span>@else<span class="t-help">One per line, e.g. “TiHAN, IIT Hyderabad — Defence &amp; MeitY”.</span>@enderror
+            <textarea id="f-incubators" name="incubators" rows="9" maxlength="1500" class="t-textarea @error('incubators') is-invalid @enderror">{{ old('incubators', implode("\n", $incubators)) }}</textarea>
+            @error('incubators')<span class="t-error">{{ $message }}</span>@else<span class="t-help">One per line (up to 10, 120 characters each), e.g. “TiHAN, IIT Hyderabad — Defence &amp; MeitY”.</span>@enderror
          </div>
       </div>
       <div class="t-card__foot"><span></span><button type="submit" class="t-btn">Save list</button></div>

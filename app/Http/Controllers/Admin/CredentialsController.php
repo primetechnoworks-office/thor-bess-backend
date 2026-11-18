@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Support\ListField;
 use App\Support\Media;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,16 +23,16 @@ class CredentialsController extends Controller
         $current = Setting::get(Setting::CREDENTIALS);
 
         $data = $request->validate([
-            'dipp' => ['required', 'string', 'max:40'],
+            'dipp' => ['required', 'string', 'max:30'],
             'dipp_verify' => ['nullable', 'url:https', 'max:300'],
-            'udyam' => ['nullable', 'string', 'max:40'],
-            'gem' => ['nullable', 'string', 'max:40'],
-            'patent' => ['nullable', 'string', 'max:40'],
-            'awards' => ['nullable', 'string', 'max:2000'],
+            'udyam' => ['nullable', 'string', 'max:30'],
+            'gem' => ['nullable', 'string', 'max:30'],
+            'patent' => ['nullable', 'string', 'max:30'],
+            'awards' => ['nullable', 'string', 'max:1000'],
             'certificate_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
         ], ['certificate_file.max' => 'The certificate image must be 5 MB or smaller.']);
 
-        $data['awards'] = array_values(array_filter(array_map('trim', preg_split('/\R/', (string) ($data['awards'] ?? '')))));
+        $data['awards'] = ListField::lines($data['awards'] ?? '', 'awards', maxLines: 8, maxLength: 120);
         $data['certificate'] = $current['certificate'] ?? null;
         $data['certificate_hd'] = $current['certificate_hd'] ?? null;
 

@@ -27,7 +27,7 @@
                <x-input name="fax" label="Fax" :value="$v('fax')" pattern="[0-9 +()\-]{7,20}" data-parsley-pattern-message="Use 7–20 digits, spaces, + ( ) or - only." />
             </div>
             <div style="margin-top:18px">
-               <x-input name="hours" label="Working hours" :value="$v('hours')" maxlength="120" placeholder="Mon – Sat, 9:30 AM – 6:30 PM IST" />
+               <x-input name="hours" label="Working hours" :value="$v('hours')" maxlength="60" placeholder="Mon – Sat, 9:30 AM – 6:30 PM IST" />
             </div>
             <div class="t-field">
                <label for="f-address" class="t-label">Short address <span class="req">*</span></label>
@@ -55,7 +55,7 @@
                   <div class="t-form-grid">
                      <div class="t-field">
                         <label class="t-label" :for="`office-label-${i}`">Name <span class="req">*</span></label>
-                        <input class="t-input" :id="`office-label-${i}`" :name="`offices[${i}][label]`" x-model="office.label" placeholder="Corporate Office" maxlength="60" required>
+                        <input class="t-input" :id="`office-label-${i}`" :name="`offices[${i}][label]`" x-model="office.label" placeholder="Corporate Office" maxlength="40" required>
                      </div>
                      <div class="t-field">
                         <label class="t-label" :for="`office-dir-${i}`">Directions link</label>

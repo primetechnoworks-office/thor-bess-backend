@@ -10,11 +10,11 @@
    <section class="t-card">
       <div class="t-card__head"><h2>Question &amp; answer</h2></div>
       <div class="t-card__body">
-         <x-input name="question" label="Question" :value="$faq->question" required maxlength="255" placeholder="e.g. Can the e-Generator be charged with solar?" />
+         <x-input name="question" label="Question" :value="$faq->question" required maxlength="160" placeholder="e.g. Can the e-Generator be charged with solar?" />
          <div class="t-field">
             <label for="f-answer" class="t-label">Answer <span class="req">*</span></label>
-            <textarea id="f-answer" name="answer" rows="7" maxlength="2000" required class="t-textarea @error('answer') is-invalid @enderror">{{ old('answer', $faq->answer) }}</textarea>
-            @error('answer')<span class="t-error">{{ $message }}</span>@else<span class="t-help">Plain text, up to 2,000 characters.</span>@enderror
+            <textarea id="f-answer" name="answer" rows="7" maxlength="1200" required class="t-textarea @error('answer') is-invalid @enderror">{{ old('answer', $faq->answer) }}</textarea>
+            @error('answer')<span class="t-error">{{ $message }}</span>@else<span class="t-help">Plain text, up to 1,200 characters.</span>@enderror
          </div>
       </div>
    </section>

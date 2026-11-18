@@ -27,10 +27,10 @@ class SettingsController extends Controller
             'sales_email' => ['required', 'email', 'max:120'],
             'landline' => ['nullable', 'string', self::PHONE],
             'fax' => ['nullable', 'string', self::PHONE],
-            'hours' => ['nullable', 'string', 'max:120'],
+            'hours' => ['nullable', 'string', 'max:60'],
             'address' => ['required', 'string', 'max:300'],
             'offices' => ['nullable', 'array', 'max:6'],
-            'offices.*.label' => ['required', 'string', 'max:60'],
+            'offices.*.label' => ['required', 'string', 'max:40'],
             'offices.*.lines' => ['required', 'string', 'max:500'],
             // Shown in an embedded map frame on the contact page, so only Google Maps links are accepted.
             'offices.*.map' => ['nullable', 'url:https', 'max:600', 'regex:#^https://(www\.|maps\.)?google\.[a-z.]+/maps#i'],

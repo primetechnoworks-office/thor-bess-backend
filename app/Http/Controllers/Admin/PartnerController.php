@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
 use App\Models\Setting;
+use App\Support\ListField;
 use App\Support\Media;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -56,9 +57,9 @@ class PartnerController extends Controller
 
     public function incubators(Request $request): RedirectResponse
     {
-        $text = $request->validate(['incubators' => ['nullable', 'string', 'max:3000']])['incubators'] ?? '';
+        $text = $request->validate(['incubators' => ['nullable', 'string', 'max:1500']])['incubators'] ?? '';
 
-        Setting::put(Setting::INCUBATORS, array_values(array_filter(array_map('trim', preg_split('/\R/', $text)))));
+        Setting::put(Setting::INCUBATORS, ListField::lines($text, 'incubators', maxLines: 10, maxLength: 120));
 
         return back()->with('success', 'Incubators list saved.');
     }

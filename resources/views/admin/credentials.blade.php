@@ -12,10 +12,10 @@
          <div class="t-card__head"><div><h2>Registrations</h2><p>Shown as a list next to the certificate. Empty fields are hidden.</p></div></div>
          <div class="t-card__body">
             <div class="t-form-grid">
-               <x-input name="dipp" label="DPIIT (Startup India) number" :value="$v('dipp')" required maxlength="40" placeholder="DIPP208347" />
-               <x-input name="udyam" label="Udyam (MSME) number" :value="$v('udyam')" maxlength="40" />
-               <x-input name="gem" label="GeM OEM seller ID" :value="$v('gem')" maxlength="40" />
-               <x-input name="patent" label="IPR patent number" :value="$v('patent')" maxlength="40" help="Also quoted on the Technology page." />
+               <x-input name="dipp" label="DPIIT (Startup India) number" :value="$v('dipp')" required maxlength="30" placeholder="DIPP208347" />
+               <x-input name="udyam" label="Udyam (MSME) number" :value="$v('udyam')" maxlength="30" />
+               <x-input name="gem" label="GeM OEM seller ID" :value="$v('gem')" maxlength="30" />
+               <x-input name="patent" label="IPR patent number" :value="$v('patent')" maxlength="30" help="Also quoted on the Technology page." />
             </div>
             <div style="margin-top:18px">
                <x-input name="dipp_verify" type="url" label="“Verify our certificate” link" :value="$v('dipp_verify')" maxlength="300" data-parsley-https-url placeholder="https://www.startupindia.gov.in/…" />
@@ -28,8 +28,8 @@
          <div class="t-card__body">
             <div class="t-field">
                <label for="f-awards" class="t-label">Awards &amp; recognitions</label>
-               <textarea id="f-awards" name="awards" rows="5" maxlength="2000" class="t-textarea @error('awards') is-invalid @enderror">{{ is_array($v('awards')) ? implode("\n", $v('awards')) : $v('awards') }}</textarea>
-               @error('awards')<span class="t-error">{{ $message }}</span>@else<span class="t-help">One award per line — each gets a trophy icon on the website.</span>@enderror
+               <textarea id="f-awards" name="awards" rows="5" maxlength="1000" class="t-textarea @error('awards') is-invalid @enderror">{{ is_array($v('awards')) ? implode("\n", $v('awards')) : $v('awards') }}</textarea>
+               @error('awards')<span class="t-error">{{ $message }}</span>@else<span class="t-help">One award per line (up to 8, 120 characters each) — each gets a trophy icon on the website.</span>@enderror
             </div>
          </div>
          <div class="t-card__foot">

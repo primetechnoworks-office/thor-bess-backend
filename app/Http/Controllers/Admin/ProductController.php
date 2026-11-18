@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Support\ListField;
 use App\Support\Media;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -73,21 +74,21 @@ class ProductController extends Controller
     private function validated(Request $request, ?Product $product = null): array
     {
         $data = $request->validate([
-            'name' => ['required', 'string', 'max:150'],
+            'name' => ['required', 'string', 'max:90'],
             'series' => ['required', Rule::in(array_keys(Product::SERIES))],
-            'capacity_label' => ['required', 'string', 'max:40'],
-            'model' => ['nullable', 'string', 'max:80'],
-            'summary' => ['required', 'string', 'max:600'],
-            'best_for' => ['nullable', 'string', 'max:1000'],
+            'capacity_label' => ['required', 'string', 'max:24'],
+            'model' => ['nullable', 'string', 'max:40'],
+            'summary' => ['required', 'string', 'max:320'],
+            'best_for' => ['nullable', 'string', 'max:400'],
             'cycles' => ['required', 'integer', 'min:0', 'max:100000'],
             'service_life' => ['required', 'integer', 'min:0', 'max:50'],
             'guarantee' => ['required', 'integer', 'min:0', 'max:50'],
             'warranty' => ['required', 'integer', 'min:0', 'max:50'],
             'variants' => ['required', 'array', 'min:1', 'max:10'],
-            'variants.*.label' => ['required', 'string', 'max:40'],
+            'variants.*.label' => ['required', 'string', 'max:24'],
             'variants.*.capacity_ah' => ['required', 'numeric', 'min:0', 'max:100000'],
-            'variants.*.energy' => ['required', 'string', 'max:60'],
-            'variants.*.price' => ['required', 'integer', 'min:0', 'max:100000000'],
+            'variants.*.energy' => ['required', 'string', 'max:36'],
+            'variants.*.price' => ['required', 'integer', 'min:0', 'max:9999999'],
             'images' => ['nullable', 'array'],
             'images.*' => ['string', Rule::in($product?->images ?? [])], // only reorder/remove existing ones
             'new_images' => ['nullable', 'array', 'max:20'],
@@ -99,8 +100,12 @@ class ProductController extends Controller
             'variants.*.label.required' => 'Each size needs a label (e.g. "100 Ah").',
             'variants.*.price.required' => 'Each size needs a price.',
             'variants.*.price.integer' => 'Prices must be whole rupees (no commas or decimals).',
+            'variants.*.price.max' => 'Prices can be at most ₹99,99,999.',
             'new_images.*.max' => 'Each image must be 3 MB or smaller.',
         ]);
+
+        // Checked before any photo is stored or deleted, so a failure leaves files untouched.
+        $data['best_for'] = ListField::lines($data['best_for'] ?? '', 'best_for', maxLines: 6, maxLength: 60);
 
         // Images: kept ones in the chosen order, then new uploads. Removed uploads are deleted.
         $kept = array_values($data['images'] ?? []);
@@ -117,7 +122,6 @@ class ProductController extends Controller
         unset($data['new_images']);
         $data['images'] = $kept;
         $data['voltage'] = Product::SERIES[$data['series']];
-        $data['best_for'] = array_values(array_filter(array_map('trim', preg_split('/\R/', (string) ($data['best_for'] ?? ''))))) ;
         $data['variants'] = array_values(array_map(fn ($v) => [
             'label' => trim($v['label']), 'capacity_ah' => $v['capacity_ah'] + 0, 'energy' => trim($v['energy']), 'price' => (int) $v['price'],
         ], $data['variants']));

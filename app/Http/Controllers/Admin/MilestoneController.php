@@ -51,12 +51,12 @@ class MilestoneController extends Controller
     private function validated(Request $request, ?Milestone $milestone = null): array
     {
         $data = $request->validate([
-            'tag' => ['required', 'string', 'max:60'],
-            'title' => ['required', 'string', 'max:160'],
-            'copy' => ['required', 'string', 'max:600'],
-            'badge' => ['nullable', 'string', 'max:120'],
-            'note' => ['nullable', 'string', 'max:255'],
-            'status' => ['nullable', 'string', 'max:80'],
+            'tag' => ['required', 'string', 'max:30'],
+            'title' => ['required', 'string', 'max:90'],
+            'copy' => ['required', 'string', 'max:300'],
+            'badge' => ['nullable', 'string', 'max:60'],
+            'note' => ['nullable', 'string', 'max:120'],
+            'status' => ['nullable', 'string', 'max:40'],
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:3072'],
             'remove_photo' => ['nullable', 'boolean'],
             'sort_order' => ['required', 'integer', 'min:0', 'max:100000'],

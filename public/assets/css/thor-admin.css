@@ -546,6 +546,8 @@ body { background: var(--t-bg); color: var(--t-text); font-family: var(--font-ou
 .t-variants__row .t-input.is-invalid { border-color: var(--t-red); background: rgba(229, 72, 77, .04); }
 .t-check input.is-invalid { outline: 2px solid var(--t-red); outline-offset: 1px; }
 .t-btn.is-busy { cursor: progress; opacity: .75; }
+.t-counter { display: block; margin-top: 4px; color: var(--t-soft); font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; }
+.t-counter.is-near { color: #b0700a; font-weight: 600; }
 
 /* Utilities used by the admin that the precompiled theme CSS doesn't include */
 .pt-7 { padding-top: 1.75rem; }

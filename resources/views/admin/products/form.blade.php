@@ -19,7 +19,7 @@
       <section class="t-card">
          <div class="t-card__head"><h2>Product details</h2></div>
          <div class="t-card__body">
-            <x-input name="name" label="Product name" :value="$product->name" required maxlength="150" placeholder="e.g. “ThOR” LFP 12V 100Ah"
+            <x-input name="name" label="Product name" :value="$product->name" required maxlength="90" placeholder="e.g. “ThOR” LFP 12V 100Ah"
                      :help="$product->exists ? 'Web address: /products/lfp-battery/'.$product->slug.' — stays the same if you rename the product.' : 'The web address is created from the name when you save.'" />
             <div class="t-form-grid" style="margin-top:18px">
                <div class="t-field">
@@ -31,19 +31,19 @@
                   </select>
                   <span class="t-help">Used for the website's 12V / 24V / 48V filter.</span>
                </div>
-               <x-input name="capacity_label" label="Capacity label" :value="$product->capacity_label" required maxlength="40" placeholder="e.g. 100 Ah or 15 / 30 Ah" />
+               <x-input name="capacity_label" label="Capacity label" :value="$product->capacity_label" required maxlength="24" placeholder="e.g. 100 Ah or 15 / 30 Ah" />
             </div>
             <div class="t-field">
                <label for="f-summary" class="t-label">Summary <span class="req">*</span></label>
-               <textarea id="f-summary" name="summary" rows="3" maxlength="600" required class="t-textarea @error('summary') is-invalid @enderror" placeholder="One or two sentences shown on the product card and page.">{{ old('summary', $product->summary) }}</textarea>
+               <textarea id="f-summary" name="summary" rows="3" maxlength="320" required class="t-textarea @error('summary') is-invalid @enderror" placeholder="One or two sentences shown on the product card and page.">{{ old('summary', $product->summary) }}</textarea>
                @error('summary')<span class="t-error">{{ $message }}</span>@enderror
             </div>
             <div class="t-field">
                <label for="f-best" class="t-label">Best for</label>
-               <textarea id="f-best" name="best_for" rows="4" maxlength="1000" class="t-textarea @error('best_for') is-invalid @enderror" placeholder="Home inverter backup&#10;Rooftop solar">{{ old('best_for', implode("\n", $product->best_for ?? [])) }}</textarea>
-               @error('best_for')<span class="t-error">{{ $message }}</span>@else<span class="t-help">One use per line — shown as the "Best for" list.</span>@enderror
+               <textarea id="f-best" name="best_for" rows="4" maxlength="400" class="t-textarea @error('best_for') is-invalid @enderror" placeholder="Home inverter backup&#10;Rooftop solar">{{ old('best_for', implode("\n", $product->best_for ?? [])) }}</textarea>
+               @error('best_for')<span class="t-error">{{ $message }}</span>@else<span class="t-help">One use per line (up to 6 lines, 60 characters each) — shown as the "Best for" list.</span>@enderror
             </div>
-            <x-input name="model" label="Model number" :value="$product->model" maxlength="80" placeholder="Optional, e.g. THOR-PRO-48-300H-15K" />
+            <x-input name="model" label="Model number" :value="$product->model" maxlength="40" placeholder="Optional, e.g. THOR-PRO-48-300H-15K" />
          </div>
       </section>
 
@@ -60,10 +60,10 @@
                <div class="t-variants__head"><span>Size label</span><span>Capacity (Ah)</span><span>Energy</span><span>Price (₹)</span><span></span></div>
                <template x-for="(row, i) in rows" :key="i">
                   <div class="t-variants__row">
-                     <input class="t-input" :name="`variants[${i}][label]`" x-model="row.label" placeholder="100 Ah" maxlength="40" required aria-label="Size label" data-parsley-errors-messages-disabled="true">
+                     <input class="t-input" :name="`variants[${i}][label]`" x-model="row.label" placeholder="100 Ah" maxlength="24" required aria-label="Size label" data-parsley-errors-messages-disabled="true">
                      <input class="t-input" type="number" step="any" min="0" :name="`variants[${i}][capacity_ah]`" x-model="row.capacity_ah" placeholder="100" required data-parsley-errors-messages-disabled="true" aria-label="Capacity in Ah">
-                     <input class="t-input" :name="`variants[${i}][energy]`" x-model="row.energy" placeholder="1.4 kWh" maxlength="60" required aria-label="Energy" data-parsley-errors-messages-disabled="true">
-                     <input class="t-input" type="number" min="0" step="1" data-parsley-type="integer" :name="`variants[${i}][price]`" x-model="row.price" placeholder="19799" required data-parsley-errors-messages-disabled="true" aria-label="Price in rupees">
+                     <input class="t-input" :name="`variants[${i}][energy]`" x-model="row.energy" placeholder="1.4 kWh" maxlength="36" required aria-label="Energy" data-parsley-errors-messages-disabled="true">
+                     <input class="t-input" type="number" min="0" max="9999999" step="1" data-parsley-type="integer" :name="`variants[${i}][price]`" x-model="row.price" placeholder="19799" required data-parsley-errors-messages-disabled="true" aria-label="Price in rupees">
                      <button type="button" class="t-icon-action t-icon-action--danger" title="Remove size" @click="rows.splice(i, 1)" :disabled="rows.length === 1"><x-icon name="trash" /></button>
                   </div>
                </template>

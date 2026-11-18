@@ -17,13 +17,13 @@
          <div class="t-card__head"><h2>Content</h2></div>
          <div class="t-card__body">
             {{-- The web address (slug) is generated from the title when the post is saved. --}}
-            <x-input name="title" label="Title" :value="$post->title" required maxlength="200" placeholder="e.g. LFP vs Lead-Acid: Why LFP wins for backup power"
+            <x-input name="title" label="Title" :value="$post->title" required maxlength="120" placeholder="e.g. LFP vs Lead-Acid: Why LFP wins for backup power"
                      :help="$post->exists
                         ? 'Web address: /blog/'.$post->slug.($post->isLive() ? ' — kept as is while the post is live, so shared links keep working.' : ' — updated from the title when you save.')
                         : 'The web address is created from the title when you save.'" />
             <div class="t-field">
                <label for="f-excerpt" class="t-label">Excerpt <span class="req">*</span></label>
-               <textarea id="f-excerpt" name="excerpt" rows="3" maxlength="400" required class="t-textarea @error('excerpt') is-invalid @enderror" placeholder="One or two sentences shown on the blog cards.">{{ old('excerpt', $post->excerpt) }}</textarea>
+               <textarea id="f-excerpt" name="excerpt" rows="3" maxlength="250" required class="t-textarea @error('excerpt') is-invalid @enderror" placeholder="One or two sentences shown on the blog cards.">{{ old('excerpt', $post->excerpt) }}</textarea>
                @error('excerpt')<span class="t-error">{{ $message }}</span>@enderror
             </div>
             <div class="t-field">
